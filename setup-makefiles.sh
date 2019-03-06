@@ -18,7 +18,7 @@
 
 set -e
 
-DEVICE=TB8703
+DEVICE=TBX704
 VENDOR=lenovo
 
 INITIAL_COPYRIGHT_YEAR=2018
@@ -44,13 +44,6 @@ write_headers
 
 # Main Qcom blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt
-
-# Blobs for TWRP data decryption
-cat << EOF >> "$BOARDMK"
-ifeq (\$(WITH_TWRP),true)
-TARGET_RECOVERY_DEVICE_DIRS += vendor/$VENDOR/$DEVICE/proprietary
-endif
-EOF
 
 # Finish
 write_footers

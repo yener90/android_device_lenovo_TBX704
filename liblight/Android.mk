@@ -26,7 +26,7 @@ LOCAL_MODULE := lights.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_TAGS := optional
 LOCAL_VENDOR_MODULE := true
 
-ifneq (,$(filter TB8703,$(TARGET_DEVICE)))
+ifneq (,$(filter TBX704,$(TARGET_DEVICE)))
     LOCAL_CFLAGS += -DWHITE_LED
 endif
 

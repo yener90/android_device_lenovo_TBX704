@@ -23,12 +23,12 @@ PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
 
 # AAPT
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_AAPT_CONFIG := normal
 
 # Dalvik heap and hwui memory limits
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
+$(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
+#$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -115,6 +115,10 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service
 
+# Fingerprint
+PRODUCT_PACKAGES += \
+    fingerprintd
+	
 # FM
 PRODUCT_PACKAGES += \
     FMRadio \
@@ -226,6 +230,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -265,14 +270,15 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc \
     init.class_main.sh \
     init.target.rc \
-    init.qcom.bt.sh \
     init.qcom.class_core.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     init.qcom.rc \
     init.qcom.sensors.sh \
     init.qcom.sh \
-    init.qcom.usb.rc
+    init.qcom.usb.rc \
+    init.msm.usb.configfs.rc \
+    init.qcom.usb.sh
 
 # RCS
 PRODUCT_PACKAGES += \
@@ -304,8 +310,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 # Shim
-PRODUCT_PACKAGES += \
-    libshims_camera
+#PRODUCT_PACKAGES += \
+#    libshims_camera
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -343,4 +349,4 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat
 
 # Call the proprietary setup
-$(call inherit-product, vendor/lenovo/TB8703/TB8703-vendor.mk)
+$(call inherit-product, vendor/lenovo/TBX704/TBX704-vendor.mk)

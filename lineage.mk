@@ -15,32 +15,33 @@
 #
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 1080
+TARGET_SCREEN_HEIGHT := 1200
 TARGET_SCREEN_WIDTH := 1920
 
 # Inherit 64-bit configs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_tablet_wifionly.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/lenovo/TB8703/device.mk)
+$(call inherit-product, device/lenovo/TBX704/device.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := lineage_TB8703
-PRODUCT_DEVICE := TB8703
+PRODUCT_NAME := lineage_TBX704
+PRODUCT_DEVICE := TBX704
 PRODUCT_BRAND := Lenovo
-PRODUCT_MODEL := Lenovo TB-8703X
+PRODUCT_MODEL := Lenovo TB-X704X
 PRODUCT_MANUFACTURER := LENOVO
 
 PRODUCT_GMS_CLIENTID_BASE := android-lenovo
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="msm8953_64-user 6.0.1 MMB29M 559 release-keys" \
-    TARGET_DEVICE="TB-8703X"
+    PRIVATE_BUILD_DESC="hq_msm8953_64-user 7.1.1 NMF26F 1581 release-keys"
+    TARGET_DEVICE="TB-X704X"
 
-BUILD_FINGERPRINT=Lenovo/TB-8703X/TB-8703X:6.0.1/MMB29M/TB-8703X_USR_S037_180404_Q1241_ROW:user/release-keys
+BUILD_FINGERPRINT=Lenovo/LenovoTB-X704F/X704F:7.1.1/NMF26F/TB-X704F_S000056_181015_ROW:user/release-keys
+
