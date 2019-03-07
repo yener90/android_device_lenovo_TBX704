@@ -212,6 +212,9 @@
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
     <bool name="config_automatic_brightness_available">true</bool>
 
+    <!-- If this is true, the screen will fade off. -->
+    <bool name="config_animateScreenLights">false</bool>
+
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
     <bool name="config_unplugTurnsOnScreen">true</bool>
 
@@ -222,8 +225,12 @@
          The default is false. -->
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
 
-    <!-- Disable lockscreen rotation by default -->
-    <bool name="config_enableLockScreenRotation">false</bool>
+    <!-- Hide this setting because we are forcing it to be enabled in build.prop.
+         Note: This is declared in both values/config.xml and values-sw600dp/config.xml.
+               It is actually the latter definition that wins but overlay both
+               to be on the safe side.
+ -->
+    <bool name="config_enableLockScreenRotation">true</bool>
 
     <!-- Is the device capable of hot swapping an UICC Card -->
     <bool name="config_hotswapCapable">true</bool>

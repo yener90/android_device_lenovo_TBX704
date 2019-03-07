@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/lenovo/TB8703
+DEVICE_PATH := device/lenovo/TBX704
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8953
@@ -37,7 +37,7 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
 # Asserts
-TARGET_OTA_ASSERT_DEVICE := TB-8703X,TB-8703F,TB-8703R,TB-8703N,TB8703
+TARGET_OTA_ASSERT_DEVICE := tb_x704f,tb_x704l, TB-X704F,TB-X704L,TBX704
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -129,20 +129,20 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_USES_ION := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_tb8703
+TARGET_INIT_VENDOR_LIB := libinit_tbx704
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
-TARGET_RECOVERY_DEVICE_MODULES := libinit_tb8703
+TARGET_RECOVERY_DEVICE_MODULES := libinit_tbx704
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlycon=msm_hsl_uart,0x78af000 androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_OFFSET = 0x00008000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CONFIG := lineageos_tb8703_defconfig
+TARGET_KERNEL_CONFIG := lineageos_tbx704_defconfig
 TARGET_KERNEL_SOURCE := kernel/lenovo/msm8953
 
 # Lights
@@ -157,9 +157,9 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4294967296
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 11666381824 # 11666398208 - 16384
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 9652641280
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Recovery
@@ -200,4 +200,4 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
-include vendor/lenovo/TB8703/BoardConfigVendor.mk
+include vendor/lenovo/TBX704/BoardConfigVendor.mk

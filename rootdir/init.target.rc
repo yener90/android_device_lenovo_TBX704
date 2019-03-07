@@ -31,6 +31,7 @@ import init.carrier.rc
 
 on early-init
     mkdir /firmware 0771 system system
+    mkdir /lenovocust 0771 system system
     mkdir /system 0777 root root
     symlink /data/tombstones /tombstones
     mkdir /dsp 0771 media media
@@ -41,6 +42,7 @@ on fs
     mount_all fstab.qcom
     write /proc/sys/vm/swappiness 100
 
+    exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/soc/7824900.sdhci/by-name/userdata
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
@@ -54,6 +56,10 @@ on fs
     mkdir /persist/bms 0700 root system
     restorecon_recursive /persist
 
+    wait /dev/block/bootdevice/by-name/lenovocust
+    mount ext4 /dev/block/bootdevice/by-name/lenovocust /lenovocust nosuid nodev barrier=1
+    restorecon_recursive   /lenovocust
+
     wait /dev/block/bootdevice/by-name/dsp
     mount ext4 /dev/block/bootdevice/by-name/dsp /dsp ro nosuid nodev barrier=1
 
@@ -65,6 +71,8 @@ on fs
     mount ext4 /dev/block/bootdevice/by-name/oem /oem ro nosuid nodev barrier=1
 
 on post-fs-data
+    chown system system /lenovocust
+    chmod 0771 /lenovocust
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -158,6 +166,7 @@ on boot
     chown system drmrpc /sys/devices/soc.0/78b7000.i2c/i2c-3/3-0020/input/input0/secure_touch
     chown system drmrpc /sys/devices/soc.0/78b8000.i2c/i2c-4/4-0020/input/input0/secure_touch_enable
     chown system drmrpc /sys/devices/soc.0/78b8000.i2c/i2c-4/4-0020/input/input0/secure_touch
+    chown system system /sys/devices/virtual/GT9110P/gt9110p/gesture
 
 service wcnss-service /system/bin/wcnss_service
     class main
@@ -211,6 +220,18 @@ service ppd /system/vendor/bin/mm-pp-dpps
     socket pps stream 0660 system system
     group system graphics
 
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+
+service gx_fpd /system/bin/gx_fpd
+    class late_start
+    user root
+    group root system
+
+on property:persist.sys.oratation=*
+    write /sys/class/GT9110P/gt9110p/oratation ${persist.sys.oratation}
+
 on property:init.svc.surfaceflinger=stopped
     stop ppd
 
@@ -238,6 +259,8 @@ on charger
     start qcom-post-boot
     setprop persist.sys.usb.config mass_storage
     start hvdcp_opti
+    #add by chenfei for hqlog JIRA A6090-105 20161117
+    setprop debug.charger.on 1
 
 service dts_configurator /system/bin/dts_configurator
     class late_start

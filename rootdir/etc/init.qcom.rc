@@ -118,8 +118,8 @@ on boot
 
     setprop ro.telephony.call_ring.multiple false
 
-    #enable camera read sensors data
-    setprop persist.camera.gyro.disable 0
+    #disable camera read sensors data for camera crash issue
+    setprop persist.camera.gyro.disable 1
 
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip

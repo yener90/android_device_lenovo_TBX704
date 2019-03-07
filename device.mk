@@ -20,12 +20,12 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage
 
 # Screen density
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_AAPT_CONFIG := normal
 
 # Dalvik heap and hwui memory limits
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
+$(call inherit-product, frameworks/native/build/phone-hdpi-2048-dalvik-heap.mk)
+#$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -51,7 +51,8 @@ PRODUCT_COPY_FILES +=  \
     $(LOCAL_PATH)/audio/audio_platform_info_extcodec.xml:system/etc/audio_platform_info_extcodec.xml \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/audio/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml
+    $(LOCAL_PATH)/audio/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
+    $(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml
 
 # XML Audio configuration files
 PRODUCT_COPY_FILES += \
@@ -78,6 +79,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libjni_livedisplay
 
+# Fingerprint
+PRODUCT_PACKAGES += \
+    fingerprintd
+
 # FM
 PRODUCT_PACKAGES += \
     FMRadio \
@@ -86,10 +91,6 @@ PRODUCT_PACKAGES += \
 # FS config
 PRODUCT_PACKAGES += \
     fs_config_files
-
-# Firmware patch
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/move_files.sh:install/bin/move_files.sh
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -180,7 +181,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml
+    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml 
 
 # Power
 PRODUCT_PACKAGES += \
@@ -196,14 +198,15 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc \
     init.class_main.sh \
     init.target.rc \
-    init.qcom.bt.sh \
     init.qcom.class_core.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     init.qcom.rc \
     init.qcom.sensors.sh \
     init.qcom.sh \
-    init.qcom.usb.rc
+    init.qcom.usb.rc \
+    init.msm.usb.configfs.rc \
+    init.qcom.usb.sh
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -247,4 +250,4 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat
 
 # Call the proprietary setup
-$(call inherit-product, vendor/lenovo/TB8703/TB8703-vendor.mk)
+$(call inherit-product, vendor/lenovo/TBX704/TBX704-vendor.mk)
