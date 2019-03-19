@@ -162,6 +162,9 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 9652641280
 TARGET_USERIMAGES_USE_EXT4 := true
 
+# Qualcomm support
+BOARD_USES_QCOM_HARDWARE := true
+
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 
@@ -170,9 +173,7 @@ TARGET_RIL_VARIANT := caf
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-
-# Qualcomm support
-BOARD_USES_QCOM_HARDWARE := true
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
