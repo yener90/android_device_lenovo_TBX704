@@ -227,6 +227,9 @@ vendor/lib/libmmcamera_ov5695_f5695ak.so
 vendor/lib/libmmcamera_ov5695_ccbfl05006.so
 vendor/lib/libmmcamera_imx219_fx219aq.so
 
+# Charger
+bin/hvdcp_opti
+
 # CNE - from tissot - OPR1.170623.026
 -priv-app/CNEService/CNEService.apk|0a8dd7de727cac5dbeb54f0f1f095839b673e863
 vendor/bin/cnd|93e4c752e71f05018a9f194de09dd394382ffd25
@@ -253,6 +256,13 @@ vendor/lib64/libdrmfs.so|e69a5f0b2835c9aa15e1f5dc21aa8755288b9867
 vendor/lib64/libdrmtime.so|9106e588ada083c061c44a62bc2cdf7d9123a745
 vendor/lib64/librpmb.so|13e932556c05dcf37b1c6f2038a670e239c56315
 vendor/lib64/libssd.so|baabf76b79866df9dabfd7761d7338e54757bc3f
+
+# Fingerprint
+#bin/gx_fpd:vendor/bin/gx_fpd
+#lib64/hw/fingerprint.default.so:vendor/lib64/hw/fingerprint.default.so
+#lib64/hw/gxfingerprint.default.so:vendor/lib64/hw/gxfingerprint.default.so
+#lib64/libfp_client.so:vendor/lib64/libfp_client.so
+#lib64/libfpservice.so:vendor/lib64/libfpservice.so
 
 # Gatekeeper - from bardock - OPM1.171019.019
 vendor/lib64/hw/gatekeeper.msm8953.so|c7b1fb00d0189513327e93c541c6e9b003bc76e9
@@ -344,19 +354,12 @@ vendor/lib64/libtinyxml2_1.so|5ffb12fd2162910fc95be463fcde04ab5c427045
 vendor/lib/hw/vulkan.msm8953.so|bba3ecd59bbb0fc708bc452c7dc205f290d2a3ce
 vendor/lib64/hw/vulkan.msm8953.so|20319d49573abbbc59ff812bb42157b7ffb960a2
 
-# Graphics firmware TB-8703X
-etc/firmware/a506_zap.b00:vendor/firmware/variant/msm/a506_zap.b00
-etc/firmware/a506_zap.b01:vendor/firmware/variant/msm/a506_zap.b01
-etc/firmware/a506_zap.b02:vendor/firmware/variant/msm/a506_zap.b02
-etc/firmware/a506_zap.elf:vendor/firmware/variant/msm/a506_zap.elf
-etc/firmware/a506_zap.mdt:vendor/firmware/variant/msm/a506_zap.mdt
-
 # Graphics firmware TB-8703F
-etc/firmware/a506_zap.b00:vendor/firmware/variant/apq/a506_zap.b00
-etc/firmware/a506_zap.b01:vendor/firmware/variant/apq/a506_zap.b01
-etc/firmware/a506_zap.b02:vendor/firmware/variant/apq/a506_zap.b02
-etc/firmware/a506_zap.elf:vendor/firmware/variant/apq/a506_zap.elf
-etc/firmware/a506_zap.mdt:vendor/firmware/variant/apq/a506_zap.mdt
+etc/firmware/a506_zap.b00:vendor/firmware/a506_zap.b00
+etc/firmware/a506_zap.b01:vendor/firmware/a506_zap.b01
+etc/firmware/a506_zap.b02:vendor/firmware/a506_zap.b02
+etc/firmware/a506_zap.elf:vendor/firmware/a506_zap.elf
+etc/firmware/a506_zap.mdt:vendor/firmware/a506_zap.mdt
 
 # Graphics firmware common
 etc/firmware/a530_pfp.fw:vendor/firmware/a530_pfp.fw
