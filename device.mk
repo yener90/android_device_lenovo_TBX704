@@ -132,7 +132,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    fingerprintd
+    android.hardware.biometrics.fingerprint@2.0-service.tbx704
 	
 # FM
 PRODUCT_PACKAGES += \

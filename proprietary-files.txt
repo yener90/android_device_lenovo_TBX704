@@ -258,11 +258,19 @@ vendor/lib64/librpmb.so|13e932556c05dcf37b1c6f2038a670e239c56315
 vendor/lib64/libssd.so|baabf76b79866df9dabfd7761d7338e54757bc3f
 
 # Fingerprint
-#bin/gx_fpd:vendor/bin/gx_fpd
-#lib64/hw/fingerprint.default.so:vendor/lib64/hw/fingerprint.default.so
-#lib64/hw/gxfingerprint.default.so:vendor/lib64/hw/gxfingerprint.default.so
-#lib64/libfp_client.so:vendor/lib64/libfp_client.so
-#lib64/libfpservice.so:vendor/lib64/libfpservice.so
+bin/gx_fpd:vendor/bin/gx_fpd
+lib64/hw/fingerprint.default.so:vendor/lib64/hw/fingerprint.default.so
+lib64/hw/gxfingerprint.default.so:vendor/lib64/hw/gxfingerprint.default.so
+lib64/libfp_client.so:vendor/lib64/libfp_client.so
+lib64/libfpservice.so:vendor/lib64/libfpservice.so
+etc/firmware/goodixfp.b00
+etc/firmware/goodixfp.b01
+etc/firmware/goodixfp.b02
+etc/firmware/goodixfp.b03
+etc/firmware/goodixfp.b04
+etc/firmware/goodixfp.b05
+etc/firmware/goodixfp.b06
+etc/firmware/goodixfp.mdt
 
 # Gatekeeper - from bardock - OPM1.171019.019
 vendor/lib64/hw/gatekeeper.msm8953.so|c7b1fb00d0189513327e93c541c6e9b003bc76e9
