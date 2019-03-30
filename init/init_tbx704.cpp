@@ -62,7 +62,7 @@ static void set_fingerprint()
 {
 	std::string baseband = GetProperty(PROP_BOOT_BASEBAND, "");
 	if (baseband == "apq") {
-		property_override("ro.build.description", "msm8953_64-user 6.0.1 MMB29M 65 release-keys");
+		property_override("ro.build.description", "hq_msm8953_64-user 7.1.1 NMF26F 1581 release-keys");
 		property_override("ro.build.product", "TB-X704F");
 		property_override_dual("ro.product.device", "ro.vendor.product.device", "TB-X704F");
 		property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "Lenovo/LenovoTB-X704F/X704F:7.1.1/NMF26F/TB-X704F_S000056_181015_ROW:user/release-keys");
@@ -70,7 +70,7 @@ static void set_fingerprint()
 	//for installing stock OTA with TWRP
 		property_override("ro.product.ota.model", "LenovoTB-X704F_ROW");
     } else if(baseband == "msm") {
-		property_override("ro.build.description", "msm8953_64-user 6.0.1 MMB29M 559 release-keys");
+		property_override("ro.build.description", "hq_msm8953_64-user 7.1.1 NMF26F 1580 release-keys");
 		property_override("ro.build.product", "TB-X704L");
 		property_override_dual("ro.product.device", "ro.vendor.product.device", "TB-X704L");
 		property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "Lenovo/LenovoTB-X704L/X704L:7.1.1/NMF26F/TB-X704L_S000056_181015_ROW:user/release-keys");
