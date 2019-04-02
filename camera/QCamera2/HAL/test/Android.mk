@@ -37,8 +37,8 @@ LOCAL_C_INCLUDES += \
     external/skia/include/core \
     external/skia/include/images \
     $(TARGET_OUT_HEADERS)/qcom/display \
-    hardware/qcom/camera/QCamera2/stack/common \
-    hardware/qcom/camera/QCamera2/stack/mm-camera-interface/inc \
+    $(LOCAL_PATH)/../stack/common \
+    $(LOCAL_PATH)/../stack/mm-camera-interface/inc \
     frameworks/av/include/media/stagefright \
     frameworks/native/include/media/openmax \
     $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
@@ -46,6 +46,7 @@ LOCAL_C_INCLUDES += \
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 LOCAL_MODULE:= camera_test
+LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE_TAGS:= tests
 
 LOCAL_CFLAGS += -Wall -Wextra -Werror -Wno-unused-parameter
